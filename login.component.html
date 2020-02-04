@@ -1,0 +1,42 @@
+<h1>Registration FORM</h1>
+<img [src]="imageurl"/>
+<form [formGroup]="login" (ngSubmit)="submit()">
+    <div class="formGroup"> 
+        <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="username" formControlName="username"/>
+            <div *ngIf="login.get('username').touched && login.get('username').invalid">
+                <div class="alert alert-danger" *ngIf="login.get('username').errors.required">Username is required</div>
+                <div class="alert alert-danger" *ngIf="login.get('username').errors.minlegth">USername should have min length</div>
+                </div>
+                </div>
+              <div>
+            <label for="password">Password:</label>
+                <input type="password" id="password" name="password" formControlName="password">
+                <div *ngIf="login.get('password').invalid && login.get('password').touched">
+                <div class="alert alert-danger" *ngIf="login.get('password').touched">Password is required</div>
+              </div>
+                    </div>
+                    <div>  
+                    <label for="number">number:</label>
+                    <input type="number" id="number" formControlName="number">
+                    <div *ngIf="login.get('number').invalid && login.get('number').touched">
+                        <div class="alert alert-danger" *ngIf="login.get('number').touched">Phone number is required</div>
+                        </div>
+                    </div>
+                     
+                    <div>
+                        <label for="email">email:</label>
+                        <input type="email" id="email"   formControlName="email">
+                        <div *ngIf="login.get('email').invalid && login.get('email').touched">
+                            <div class="alert alert-danger" *ngIf="login.get('email').touched">email is required</div>
+                            </div>
+                        </div>  
+                  
+                <div>
+                    <button  type="button" class="btn btn-primary" 
+                     [disabled]="login.invalid" (click)="check(username.value , password.value)">Login</button>
+                    </div>
+                    <br>
+                    {{msg}}
+                    
+                    </form>
